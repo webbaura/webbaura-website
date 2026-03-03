@@ -1,59 +1,49 @@
 import type { Metadata } from 'next';
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
-import JsonLd from '@/components/sections/JsonLd';
-import { content } from '@/lib/content';
-import { getCSSVariables } from '@/lib/brand';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap' });
+const inter = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-jakarta',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: {
-    default: content.business.name,
-    template: `%s | ${content.business.name}`,
+    default: 'Webbaura — We build your site first. You decide.',
+    template: '%s | Webbaura',
   },
-  description: content.business.description,
-  keywords: content.seo?.keywords || [],
-  authors: [{ name: content.business.name }],
-  creator: content.business.name,
-  metadataBase: new URL(content.seo?.siteUrl || 'https://example.com'),
+  description:
+    'Webbaura builds production-ready websites for Melbourne businesses using competitor intelligence and AI. You see the staging site before committing. No upfront cost.',
+  keywords: ['web design Melbourne', 'website builder', 'small business websites', 'Melbourne web agency'],
+  metadataBase: new URL('https://webbaura.com'),
   openGraph: {
     type: 'website',
     locale: 'en_AU',
-    url: content.seo?.siteUrl || '/',
-    siteName: content.business.name,
-    title: content.business.name,
-    description: content.business.description,
+    url: 'https://webbaura.com',
+    siteName: 'Webbaura',
+    title: 'Webbaura — We build your site first. You decide.',
+    description:
+      'Production-ready websites built from competitor intelligence. See your new site before you commit.',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: content.business.name,
-    description: content.business.description,
+    title: 'Webbaura — We build your site first.',
+    description: 'See your new website before you commit to anything.',
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
-  },
-  alternates: { canonical: content.seo?.siteUrl || '/' },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
-      <head>
-        <style dangerouslySetInnerHTML={{ __html: getCSSVariables() }} />
-      </head>
-      <body className="font-sans">
-        <JsonLd />
-        <Nav />
-        <main>{children}</main>
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
