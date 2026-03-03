@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, TrendingUp, CheckCircle, Globe, Crosshair, Bot, Workflow } from 'lucide-react';
+import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, CheckCircle, Globe, Crosshair, Bot, Workflow } from 'lucide-react';
 import portfolio from '@/lib/portfolio';
 
 const CALENDLY  = process.env.NEXT_PUBLIC_CALENDLY_URL  || 'https://calendly.com/webbaura/15min';
@@ -172,31 +172,20 @@ function Portfolio() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 1, border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
           {portfolio.map((item, i) => (
-            <div key={item.slug} className={`card reveal reveal-delay-${i + 1}`} style={{ overflow: 'hidden' }}>
-              {/* Score bar — only shown when before/after scores available */}
-              {item.scoreBefore != null && item.scoreAfter != null && (
-                <div style={{
-                  padding: '14px 20px', borderBottom: '1px solid var(--border)',
-                  display: 'flex', alignItems: 'center', gap: 8,
-                }}>
-                  <span style={{ fontSize: 12, color: 'var(--muted)', fontFamily: 'var(--font-head)' }}>Visual score</span>
-                  <span className="score-badge" style={{ background: 'rgba(248,113,113,0.12)', color: 'var(--red)' }}>
-                    {item.scoreBefore}/10 before
-                  </span>
-                  <span style={{ color: 'var(--muted2)', fontSize: 12 }}>→</span>
-                  <span className="score-badge" style={{ background: 'rgba(52,211,153,0.12)', color: 'var(--green)' }}>
-                    {item.scoreAfter}/10 after
-                  </span>
-                </div>
-              )}
-
-              {/* Static screenshot */}
-              <div style={{
-                height: 210, background: 'var(--bg2)', overflow: 'hidden', position: 'relative',
-                borderBottom: '1px solid var(--border)',
-              }}>
+            <div
+              key={item.slug}
+              className={`reveal reveal-delay-${i + 1}`}
+              style={{
+                background: 'var(--surface)',
+                borderRight: '1px solid var(--border)',
+                display: 'flex', flexDirection: 'column',
+                transition: 'background 0.2s',
+              }}
+            >
+              {/* Screenshot — consistent height for all cards */}
+              <div style={{ height: 220, background: 'var(--bg2)', overflow: 'hidden', position: 'relative', flexShrink: 0 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`/portfolio/${item.slug}.jpg`}
@@ -204,44 +193,63 @@ function Portfolio() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
                   loading="lazy"
                 />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 55%, rgba(13,13,16,0.7) 100%)' }} />
+                {/* Industry pill overlaid on screenshot */}
+                <div style={{
+                  position: 'absolute', top: 14, left: 14,
+                  background: 'rgba(13,13,16,0.72)', backdropFilter: 'blur(8px)',
+                  border: '1px solid var(--border)', borderRadius: 99,
+                  padding: '4px 12px', fontSize: 11, fontWeight: 700,
+                  fontFamily: 'var(--font-head)', color: 'var(--fg2)',
+                  letterSpacing: '0.06em', textTransform: 'uppercase',
+                }}>
+                  {item.industry}
+                </div>
               </div>
 
-              <div style={{ padding: 24 }}>
-                <div style={{ display: 'flex', gap: 6, marginBottom: 14, flexWrap: 'wrap' }}>
+              {/* Content — consistent structure for all cards */}
+              <div style={{ padding: '24px 26px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                {/* Tags row */}
+                <div style={{ display: 'flex', gap: 6, marginBottom: 14, flexWrap: 'wrap', alignItems: 'center' }}>
                   {item.tags.map(t => (
                     <span key={t} style={{
-                      fontSize: 12, fontWeight: 600, fontFamily: 'var(--font-head)',
-                      color: 'var(--muted)', background: 'var(--surface)',
-                      border: '1px solid var(--border)', borderRadius: 6, padding: '2px 9px',
+                      fontSize: 11, fontWeight: 600, fontFamily: 'var(--font-head)',
+                      color: 'var(--muted)', background: 'rgba(255,255,255,0.05)',
+                      border: '1px solid var(--border)', borderRadius: 5, padding: '2px 8px',
+                      letterSpacing: '0.04em',
                     }}>{t}</span>
                   ))}
+                  {/* Score chip — inline, same visual weight as tags */}
+                  {item.scoreBefore != null && item.scoreAfter != null && (
+                    <span style={{
+                      fontSize: 11, fontWeight: 700, fontFamily: 'var(--font-head)',
+                      color: 'var(--green)', background: 'rgba(52,211,153,0.1)',
+                      border: '1px solid rgba(52,211,153,0.2)', borderRadius: 5, padding: '2px 8px',
+                    }}>
+                      {item.scoreBefore} → {item.scoreAfter}/10
+                    </span>
+                  )}
                 </div>
-                <h3 style={{ fontSize: 18, marginBottom: 8 }}>{item.name}</h3>
-                <p style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.65, marginBottom: 20 }}>
+
+                <h3 style={{ fontSize: 17, marginBottom: 10, lineHeight: 1.3 }}>{item.name}</h3>
+                <p style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.7, flex: 1 }}>
                   {item.description}
                 </p>
-                <a href={item.siteUrl} target="_blank" rel="noopener noreferrer"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 600, color: 'var(--accent-light)', fontFamily: 'var(--font-head)' }}>
-                  View site <ArrowUpRight size={14} />
-                </a>
+
+                {/* Footer row — location + link, always at bottom */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 22, paddingTop: 18, borderTop: '1px solid var(--border)' }}>
+                  <span style={{ fontSize: 12, color: 'var(--muted2)', fontFamily: 'var(--font-head)' }}>
+                    {item.location}
+                  </span>
+                  <a
+                    href={item.siteUrl} target="_blank" rel="noopener noreferrer"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 13, fontWeight: 600, color: 'var(--accent-light)', fontFamily: 'var(--font-head)' }}
+                  >
+                    View site <ArrowUpRight size={13} />
+                  </a>
+                </div>
               </div>
             </div>
           ))}
-
-          {/* Coming soon placeholder */}
-          <div className="card reveal reveal-delay-2" style={{
-            padding: 36, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
-            textAlign: 'center', minHeight: 340, borderStyle: 'dashed',
-          }}>
-            <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--surface)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
-              <TrendingUp size={22} color="var(--muted2)" />
-            </div>
-            <p style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.7 }}>
-              More builds in progress.<br />
-              Each week we add to the portfolio.
-            </p>
-          </div>
         </div>
       </div>
     </section>
