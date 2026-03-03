@@ -38,6 +38,12 @@ export const metadata: Metadata = {
     description: 'See your new website before you commit to anything.',
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
