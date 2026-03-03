@@ -5,8 +5,8 @@ export interface PortfolioItem {
   location:    string;
   description: string;
   tags:        string[];
-  scoreBefore: number;
-  scoreAfter:  number;
+  scoreBefore?: number;
+  scoreAfter?:  number;
   siteUrl:     string;
 }
 
@@ -21,6 +21,15 @@ const portfolio: PortfolioItem[] = [
     scoreBefore: 3,
     scoreAfter:  7,
     siteUrl:     'https://apex-electrical-website.vercel.app',
+  },
+  {
+    slug:        'combined-arms',
+    name:        'Combined Arms Consulting',
+    industry:    'Business Consulting',
+    location:    'Global',
+    description: 'A brand identity and web presence for a strategic business consulting firm. Dark, deliberate, and built to convey authority — from first impression through to conversion.',
+    tags:        ['Consulting', 'Strategy'],
+    siteUrl:     'https://www.combinedarms.com.au',
   },
 ];
 

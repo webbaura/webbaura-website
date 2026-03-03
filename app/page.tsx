@@ -5,7 +5,7 @@ import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, TrendingUp, Chec
 import portfolio from '@/lib/portfolio';
 
 const CALENDLY  = process.env.NEXT_PUBLIC_CALENDLY_URL  || 'https://calendly.com/webbaura/15min';
-const EMAIL     = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@webbaura.com';
+const EMAIL     = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'aaronjlevin@outlook.com';
 
 // ── Scroll reveal hook ────────────────────────────────────────────────────────
 function useReveal() {
@@ -174,35 +174,36 @@ function Portfolio() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 24 }}>
           {portfolio.map((item, i) => (
             <div key={item.slug} className={`card reveal reveal-delay-${i + 1}`} style={{ overflow: 'hidden' }}>
-              {/* Score bar */}
-              <div style={{
-                padding: '14px 20px', borderBottom: '1px solid var(--border)',
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              }}>
-                <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                  <span style={{ fontSize: 13, color: 'var(--muted)', fontFamily: 'var(--font-head)' }}>Visual score</span>
+              {/* Score bar — only shown when before/after scores available */}
+              {item.scoreBefore != null && item.scoreAfter != null && (
+                <div style={{
+                  padding: '14px 20px', borderBottom: '1px solid var(--border)',
+                  display: 'flex', alignItems: 'center', gap: 8,
+                }}>
+                  <span style={{ fontSize: 12, color: 'var(--muted)', fontFamily: 'var(--font-head)' }}>Visual score</span>
                   <span className="score-badge" style={{ background: 'rgba(248,113,113,0.12)', color: 'var(--red)' }}>
                     {item.scoreBefore}/10 before
                   </span>
-                  <span style={{ color: 'var(--muted2)' }}>→</span>
+                  <span style={{ color: 'var(--muted2)', fontSize: 12 }}>→</span>
                   <span className="score-badge" style={{ background: 'rgba(52,211,153,0.12)', color: 'var(--green)' }}>
                     {item.scoreAfter}/10 after
                   </span>
                 </div>
-              </div>
+              )}
 
-              {/* Site preview frame */}
+              {/* Static screenshot */}
               <div style={{
-                height: 200, background: 'var(--bg2)', overflow: 'hidden', position: 'relative',
+                height: 210, background: 'var(--bg2)', overflow: 'hidden', position: 'relative',
                 borderBottom: '1px solid var(--border)',
               }}>
-                <iframe
-                  src={item.siteUrl}
-                  title={item.name}
-                  style={{ width: '200%', height: '200%', transform: 'scale(0.5)', transformOrigin: 'top left', border: 'none', pointerEvents: 'none' }}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/portfolio/${item.slug}.jpg`}
+                  alt={`${item.name} website`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
                   loading="lazy"
                 />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 60%, var(--bg2) 100%)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 55%, rgba(13,13,16,0.7) 100%)' }} />
               </div>
 
               <div style={{ padding: 24 }}>
