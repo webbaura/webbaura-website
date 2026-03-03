@@ -457,7 +457,14 @@ function Services() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 2 }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+          gap: 1,
+          border: '1px solid var(--border)',
+          borderRadius: 'var(--radius-lg)',
+          overflow: 'hidden',
+        }}>
           {SERVICES.map((s, i) => (
             <div
               key={i}
@@ -465,17 +472,16 @@ function Services() {
               style={{
                 padding: '36px 32px',
                 background: 'var(--surface)',
-                border: '1px solid var(--border)',
-                transition: 'background 0.2s, border-color 0.2s',
+                borderRight: '1px solid var(--border)',
+                borderBottom: '1px solid var(--border)',
+                transition: 'background 0.2s',
                 cursor: 'default',
               }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLDivElement).style.background = 'var(--surface-hover)';
-                (e.currentTarget as HTMLDivElement).style.borderColor = 'var(--border-strong)';
               }}
               onMouseLeave={e => {
                 (e.currentTarget as HTMLDivElement).style.background = 'var(--surface)';
-                (e.currentTarget as HTMLDivElement).style.borderColor = 'var(--border)';
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
@@ -569,7 +575,7 @@ function WhyDifferent() {
 // ── CTA ───────────────────────────────────────────────────────────────────────
 function CTA() {
   return (
-    <section style={{ padding: '120px 0' }}>
+    <section style={{ padding: '120px 0', overflow: 'hidden' }}>
       <div className="container">
         <div className="reveal" style={{ position: 'relative' }}>
           {/* Glow */}

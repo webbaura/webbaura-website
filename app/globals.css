@@ -33,6 +33,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* must be on html too — body-only doesn't catch all cases on iOS */
 }
 
 body {
