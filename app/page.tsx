@@ -63,21 +63,22 @@ function Hero() {
           fontFamily: 'var(--font-head)',
         }}>
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)', display: 'inline-block' }} />
-          Built for Melbourne businesses
+          Full-stack developer · 6+ years · 50+ clients
         </div>
 
-        <h1 className="reveal reveal-delay-1" style={{ fontSize: 'clamp(40px, 6vw, 72px)', marginBottom: 24, maxWidth: 780, margin: '0 auto 24px' }}>
-          We build your site first.
+        <h1 className="reveal reveal-delay-1" style={{ fontSize: 'clamp(38px, 5.5vw, 66px)', marginBottom: 24, maxWidth: 740, margin: '0 auto 24px' }}>
+          Websites and systems
           <br />
-          <span style={{ color: 'var(--accent-light)' }}>You decide if you want it.</span>
+          <span style={{ color: 'var(--accent-light)' }}>built to actually work.</span>
         </h1>
 
         <p className="reveal reveal-delay-2" style={{
-          fontSize: 'clamp(17px, 2vw, 20px)', color: 'var(--muted)', lineHeight: 1.65,
-          maxWidth: 580, margin: '0 auto 48px',
+          fontSize: 'clamp(16px, 1.8vw, 19px)', color: 'var(--muted)', lineHeight: 1.7,
+          maxWidth: 560, margin: '0 auto 48px',
         }}>
-          We analyse your market, build you a production-ready website, then send you the staging link.
-          No deposit. No obligation. Just a better website.
+          I&apos;m a full-stack developer with 6+ years shipping production applications.
+          I&apos;ve worked with businesses ranging from local SMEs to large organisations —
+          designing, building, and deploying without the agency overhead.
         </p>
 
         <div className="reveal reveal-delay-3" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -432,7 +433,7 @@ function CTA() {
               Want to see what we'd build for you?
             </h2>
             <p style={{ color: 'var(--muted)', fontSize: 17, maxWidth: 480, margin: '0 auto 48px', lineHeight: 1.7 }}>
-              We'll research your market, build your site, and send you the link — before you spend a dollar.
+              I&apos;ll research your market, build your site, and send you the link — before you spend a dollar.
             </p>
 
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
