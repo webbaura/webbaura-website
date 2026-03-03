@@ -1,11 +1,23 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, CheckCircle, Globe, Crosshair, Bot, Workflow } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, CheckCircle, Globe, Crosshair, Bot, Workflow, Quote } from 'lucide-react';
 import portfolio from '@/lib/portfolio';
 
 const CALENDLY  = process.env.NEXT_PUBLIC_CALENDLY_URL  || 'https://calendly.com/webbaura/15min';
 const EMAIL     = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'aaronjlevin@outlook.com';
+
+// ── Stats hook — fetches live build count from build server ──────────────────
+function useStats() {
+  const [stats, setStats] = useState<{ sitesRebuilt: number } | null>(null);
+  useEffect(() => {
+    fetch('https://tools.webbaura.com/stats')
+      .then(r => r.json())
+      .then(setStats)
+      .catch(() => setStats({ sitesRebuilt: 5 })); // fallback
+  }, []);
+  return stats;
+}
 
 // ── Scroll reveal hook ────────────────────────────────────────────────────────
 function useReveal() {
@@ -69,16 +81,16 @@ function Hero() {
         <h1 className="reveal reveal-delay-1" style={{ fontSize: 'clamp(38px, 5.5vw, 66px)', marginBottom: 24, maxWidth: 740, margin: '0 auto 24px' }}>
           Websites and systems
           <br />
-          <span style={{ color: 'var(--accent-light)' }}>built to actually work.</span>
+          <span style={{ color: 'var(--accent-light)' }}>shaped by your business.</span>
         </h1>
 
         <p className="reveal reveal-delay-2" style={{
           fontSize: 'clamp(16px, 1.8vw, 19px)', color: 'var(--muted)', lineHeight: 1.7,
           maxWidth: 560, margin: '0 auto 48px',
         }}>
-          I&apos;m a full-stack developer with 6+ years shipping production applications.
-          I&apos;ve worked with businesses ranging from local SMEs to large organisations —
-          designing, building, and deploying without the agency overhead.
+          Full-stack developer with 6+ years in production. I build websites, automation systems,
+          and AI tools — designed around what your business actually needs, with full code
+          ownership handed to you on delivery.
         </p>
 
         <div className="reveal reveal-delay-3" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -86,8 +98,147 @@ function Hero() {
             <Calendar size={17} /> Book a free call
           </a>
           <a href={`mailto:${EMAIL}`} className="btn btn-ghost" style={{ fontSize: 16, padding: '15px 32px' }}>
-            <Mail size={17} /> {EMAIL}
+            <Mail size={17} /> Send an email
           </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Trust strip ───────────────────────────────────────────────────────────────
+function TrustStrip({ sitesRebuilt }: { sitesRebuilt: number }) {
+  const stats = [
+    {
+      value: sitesRebuilt > 0 ? `${sitesRebuilt}` : '—',
+      label: 'Sites rebuilt',
+      sublabel: 'and counting',
+    },
+    {
+      value: '50+',
+      label: 'Clients served',
+      sublabel: 'SME to enterprise',
+    },
+    {
+      value: '6+',
+      label: 'Years in production',
+      sublabel: 'full-stack development',
+    },
+    {
+      value: '★ 5.0',
+      label: 'Client satisfaction',
+      sublabel: 'across all engagements',
+      accent: true,
+    },
+  ];
+
+  return (
+    <div style={{
+      borderTop: '1px solid var(--border)',
+      borderBottom: '1px solid var(--border)',
+      background: 'var(--bg2)',
+    }}>
+      <div className="container">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+          gap: 0,
+        }}>
+          {stats.map((s, i) => (
+            <div key={i} style={{
+              padding: '28px 24px',
+              borderRight: i < stats.length - 1 ? '1px solid var(--border)' : 'none',
+              textAlign: 'center',
+            }}>
+              <div style={{
+                fontFamily: 'var(--font-head)',
+                fontSize: 'clamp(24px, 3vw, 34px)',
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+                color: s.accent ? 'var(--amber)' : 'var(--fg)',
+                marginBottom: 4,
+              }}>
+                {s.value}
+              </div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg2)', fontFamily: 'var(--font-head)', marginBottom: 2 }}>
+                {s.label}
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--muted2)' }}>
+                {s.sublabel}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Testimonial ───────────────────────────────────────────────────────────────
+const TESTIMONIAL = {
+  quote: "Aaron doesn't waste your time. He looked at what we were trying to communicate, understood it, and built something that actually reflects the standard of the work we do. No lengthy briefs, no back-and-forth on things that shouldn't need explaining. Clean code, fast delivery, and the site has performed exactly as intended since day one.",
+  name:  'Leon',
+  role:  'Director',
+  org:   'Combined Arms Consulting',
+  stars: 5,
+};
+
+function Testimonial() {
+  return (
+    <section style={{ padding: '80px 0' }}>
+      <div className="container">
+        <div className="reveal" style={{ maxWidth: 780, margin: '0 auto' }}>
+          <div className="card" style={{
+            padding: 'clamp(32px, 5vw, 56px)',
+            background: 'linear-gradient(135deg, rgba(124,106,247,0.06) 0%, var(--surface) 100%)',
+            borderColor: 'rgba(124,106,247,0.16)',
+            position: 'relative',
+          }}>
+            {/* Stars */}
+            <div style={{ display: 'flex', gap: 3, marginBottom: 24 }}>
+              {Array.from({ length: TESTIMONIAL.stars }).map((_, i) => (
+                <Star key={i} size={16} fill="var(--amber)" color="var(--amber)" />
+              ))}
+            </div>
+
+            {/* Quote icon */}
+            <div style={{ position: 'absolute', top: 32, right: 36, opacity: 0.08 }}>
+              <Quote size={64} color="var(--accent)" />
+            </div>
+
+            <blockquote style={{
+              fontSize: 'clamp(16px, 1.8vw, 19px)',
+              lineHeight: 1.75,
+              color: 'var(--fg2)',
+              fontStyle: 'normal',
+              marginBottom: 32,
+              position: 'relative',
+            }}>
+              &ldquo;{TESTIMONIAL.quote}&rdquo;
+            </blockquote>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              {/* Avatar initial */}
+              <div style={{
+                width: 42, height: 42, borderRadius: '50%',
+                background: 'var(--accent-subtle)',
+                border: '1px solid rgba(124,106,247,0.3)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: 16,
+                color: 'var(--accent-light)', flexShrink: 0,
+              }}>
+                {TESTIMONIAL.name[0]}
+              </div>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: 14, fontFamily: 'var(--font-head)', color: 'var(--fg)' }}>
+                  {TESTIMONIAL.name}
+                </div>
+                <div style={{ fontSize: 13, color: 'var(--muted)' }}>
+                  {TESTIMONIAL.role}, {TESTIMONIAL.org}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -111,8 +262,8 @@ const STEPS = [
   {
     icon: Send,
     number: '03',
-    title: 'We send you the link',
-    body: "You get a live staging URL. No invoice. No sales call. If you love it, we talk. If not, keep the insights and move on — no hard feelings.",
+    title: 'You get the link — and the code',
+    body: "A live staging URL lands in your inbox. If you love it, we talk. If not, move on with no obligation. Either way, you keep full ownership of everything built.",
   },
 ];
 
@@ -369,17 +520,17 @@ const REASONS = [
   {
     icon: Search,
     title: 'Grounded in intelligence',
-    body: 'Every build starts with competitor analysis — we score local rivals, map design patterns, and identify exactly where your site should differentiate.',
+    body: 'Every build starts with competitor analysis — local rivals scored, design patterns mapped, and positioning gaps identified before a line of code is written.',
   },
   {
     icon: CheckCircle,
-    title: 'Production quality, every time',
-    body: 'Next.js, TypeScript, Core Web Vitals tested. Not a page builder. Not a template. A proper codebase you own outright.',
+    title: 'You own everything',
+    body: 'The repo is yours. Full source code, no lock-in, no ongoing fees unless you want them. Built on Next.js and TypeScript — hand it to any developer and they can work with it.',
   },
   {
     icon: Star,
-    title: 'Zero commitment to see it',
-    body: "We show you the finished site on a live staging URL before any money changes hands. The risk is entirely ours.",
+    title: 'See it before you commit',
+    body: 'You get a live staging URL before any money changes hands. If it works for you, we talk. If not, keep the insights — the risk is entirely mine.',
   },
 ];
 
@@ -475,7 +626,7 @@ function Footer() {
           © {new Date().getFullYear()} Webbaura · Melbourne, Australia
         </p>
         <a href={`mailto:${EMAIL}`} style={{ color: 'var(--muted)', fontSize: 13, fontFamily: 'var(--font-head)' }}>
-          {EMAIL}
+          Get in touch
         </a>
       </div>
     </footer>
@@ -485,15 +636,18 @@ function Footer() {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function Home() {
   useReveal();
+  const stats = useStats();
 
   return (
     <>
       <Nav />
       <main>
         <Hero />
+        <TrustStrip sitesRebuilt={stats?.sitesRebuilt ?? 0} />
         <HowItWorks />
         <Services />
         <Portfolio />
+        <Testimonial />
         <WhyDifferent />
         <CTA />
       </main>
