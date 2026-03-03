@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, TrendingUp, CheckCircle } from 'lucide-react';
+import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, TrendingUp, CheckCircle, Globe, Crosshair, Bot, Workflow } from 'lucide-react';
 import portfolio from '@/lib/portfolio';
 
 const CALENDLY  = process.env.NEXT_PUBLIC_CALENDLY_URL  || 'https://calendly.com/webbaura/15min';
@@ -246,6 +246,114 @@ function Portfolio() {
   );
 }
 
+// ── Services ──────────────────────────────────────────────────────────────────
+const SERVICES = [
+  {
+    icon: Globe,
+    label: 'Websites',
+    title: 'A site that does the work while you sleep',
+    body: 'Production-ready, mobile-first websites built for lead capture and local search. Competitive design, clean code, yours to own outright.',
+    points: ['Competitor-informed design', 'SEO-ready from day one', 'Core Web Vitals tested'],
+  },
+  {
+    icon: Crosshair,
+    label: 'Lead Generation',
+    title: 'Know who to call before they call you',
+    body: 'We identify local businesses that are losing customers to better-presented competitors, score their digital presence, and build a warm outreach pipeline — ready to act on.',
+    points: ['Automated prospect discovery', 'Prioritised by opportunity', 'Personalised outreach at scale'],
+  },
+  {
+    icon: Workflow,
+    label: 'Automation',
+    title: 'Stop doing manually what a system can do overnight',
+    body: 'Custom automation pipelines that handle intake, follow-up, reporting, and internal workflows — so your team focuses on work that actually needs them.',
+    points: ['Client intake & onboarding flows', 'CRM and scheduling integrations', 'Reporting and digest automation'],
+  },
+  {
+    icon: Bot,
+    label: 'AI Agents',
+    title: 'A tireless team member that never misses a message',
+    body: 'Custom AI agents that handle enquiries, qualify leads, book appointments, and respond intelligently — trained on your business and available around the clock.',
+    points: ['Conversational lead qualification', 'Bookings and FAQ handling', 'Connected to your existing tools'],
+  },
+];
+
+function Services() {
+  return (
+    <section style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+      <div className="container">
+        <div className="reveal" style={{ marginBottom: 64 }}>
+          <p style={{ color: 'var(--accent-light)', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>
+            What we build
+          </p>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+            <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', maxWidth: 480 }}>
+              Custom solutions.<br />Real outcomes.
+            </h2>
+            <p style={{ color: 'var(--muted)', fontSize: 15, maxWidth: 360, lineHeight: 1.7 }}>
+              Every engagement starts with understanding what's actually costing you customers — then building the system that fixes it.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 2 }}>
+          {SERVICES.map((s, i) => (
+            <div
+              key={i}
+              className={`reveal reveal-delay-${i + 1}`}
+              style={{
+                padding: '36px 32px',
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                transition: 'background 0.2s, border-color 0.2s',
+                cursor: 'default',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLDivElement).style.background = 'var(--surface-hover)';
+                (e.currentTarget as HTMLDivElement).style.borderColor = 'var(--border-strong)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLDivElement).style.background = 'var(--surface)';
+                (e.currentTarget as HTMLDivElement).style.borderColor = 'var(--border)';
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
+                <div style={{
+                  width: 38, height: 38, borderRadius: 9,
+                  background: 'var(--accent-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <s.icon size={17} color="var(--accent-light)" />
+                </div>
+                <span style={{
+                  fontSize: 11, fontWeight: 700, fontFamily: 'var(--font-head)',
+                  letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-light)',
+                }}>
+                  {s.label}
+                </span>
+              </div>
+
+              <h3 style={{ fontSize: 18, marginBottom: 12, lineHeight: 1.3 }}>{s.title}</h3>
+              <p style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.75, marginBottom: 24 }}>{s.body}</p>
+
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {s.points.map((pt, j) => (
+                  <li key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--fg2)' }}>
+                    <span style={{ width: 16, height: 16, borderRadius: '50%', background: 'rgba(52,211,153,0.14)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <CheckCircle size={10} color="var(--green)" />
+                    </span>
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── Why different ─────────────────────────────────────────────────────────────
 const REASONS = [
   {
@@ -374,6 +482,7 @@ export default function Home() {
       <main>
         <Hero />
         <HowItWorks />
+        <Services />
         <Portfolio />
         <WhyDifferent />
         <CTA />
