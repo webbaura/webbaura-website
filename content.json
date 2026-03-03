@@ -1,0 +1,166 @@
+{
+  "business": {
+    "name": "Webbaura",
+    "tagline": "Websites Built With Purpose. Results You Can Measure.",
+    "description": "Webbaura crafts strategic, high-performance websites for businesses ready to grow. Ethical design. Disciplined execution. Real results.",
+    "industry": "Freelance Web Development",
+    "location": "",
+    "phone": "",
+    "address": {
+      "street": "",
+      "city": "",
+      "state": "",
+      "country": "AU"
+    }
+  },
+  "philosophy": "Design With Virtue. Build With Discipline. Every pixel has a purpose, every decision has a reason. We believe great websites aren't just built — they're architected with intention, shaped by strategy, and delivered with the kind of care that creates long-term value for the businesses that depend on them.",
+  "seo": {
+    "siteUrl": "",
+    "keywords": [
+      "freelance web developer Australia",
+      "custom website design Australia",
+      "small business website development",
+      "professional web design services",
+      "affordable web developer Australia",
+      "lead generation website design",
+      "conversion-focused web design",
+      "strategic website development"
+    ]
+  },
+  "social": {
+    "instagram": "",
+    "linkedin": "",
+    "facebook": ""
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "headline": "Websites That Work As Hard As You Do",
+        "subheadline": "Webbaura builds strategic, conversion-focused websites for ambitious businesses — designed with purpose, built with discipline, and engineered to generate real leads.",
+        "cta": "Start Your Project"
+      },
+      "sections": [
+        {
+          "type": "social_proof_bar",
+          "label": "Trusted by businesses across Australia",
+          "note": "Logos or stats placeholder"
+        },
+        {
+          "type": "problem_statement",
+          "headline": "Most Websites Look Good. Yours Needs to Perform.",
+          "body": "A beautiful website that doesn't convert is just an expensive brochure. Too many businesses are sitting on digital real estate that looks fine but quietly fails them every single day — no leads coming in, no clarity in the message, no strategy behind the build. That's exactly the problem Webbaura was created to solve."
+        },
+        {
+          "type": "services_preview",
+          "headline": "What We Build",
+          "items": [
+            {
+              "title": "Business Websites",
+              "summary": "Clean, fast, conversion-ready sites that represent your brand and turn visitors into enquiries."
+            },
+            {
+              "title": "Landing Pages",
+              "summary": "Focused single-page experiences built to drive one outcome — whether that's a sale, a call, or a sign-up."
+            },
+            {
+              "title": "Website Redesigns",
+              "summary": "Take your outdated site and rebuild it with modern design, better structure, and a strategy behind every section."
+            }
+          ],
+          "cta": "See All Services"
+        },
+        {
+          "type": "why_us",
+          "headline": "Why Businesses Choose Webbaura",
+          "points": [
+            {
+              "title": "Strategy First",
+              "body": "We don't open a design file until we understand your goals, your audience, and what success looks like for you."
+            },
+            {
+              "title": "No Bloat. No Fluff.",
+              "body": "Every page, section, and line of copy serves a purpose. We cut what doesn't work and double down on what does."
+            },
+            {
+              "title": "You Own Everything",
+              "body": "Your website, your code, your hosting. No lock-in contracts, no hidden platform fees. Just clean work handed over to you."
+            }
+          ]
+        },
+        {
+          "type": "cta_banner",
+          "headline": "Ready to Build Something That Actually Works?",
+          "subheadline": "Let's talk about your project — no pressure, no jargon, just an honest conversation about what's possible.",
+          "cta": "Get In Touch"
+        }
+      ]
+    },
+    "about": {
+      "title": "About",
+      "headline": "Built on Discipline. Driven by Doing the Right Thing.",
+      "content": "Webbaura was started by Aaron with one clear conviction: too many businesses are being sold websites that look impressive in a proposal but underdeliver in the real world. The industry is full of agencies that over-promise, outsource everything, and disappear after launch. Webbaura exists to be the opposite of that.\n\nEvery project is handled with genuine care — not the kind you put in a pitch deck, but the kind that shows up in how questions get answered, how deadlines get met, and how honest we are when something isn't working. We operate on a simple code: design with virtue, build with discipline. That means no cutting corners on code quality, no dark patterns in design, no misleading timelines to win a job. Just solid, strategic work from someone who actually gives a damn about your outcome.\n\nIf you're a small business, a startup founder, or an entrepreneur who's tired of vague promises and mediocre results — this is where you belong. Webbaura is a boutique operation by design, which means you get direct access, clear communication, and a finished product built specifically for your goals. Not a templated solution. Not an offshore handoff. Just real work, done properly.",
+      "values": [
+        {
+          "title": "Virtue in Design",
+          "body": "Good design doesn't manipulate — it serves. Every design decision we make is guided by what's genuinely best for your users and your business. We don't use dark patterns, we don't chase trends that don't serve the work, and we never sacrifice integrity for aesthetics."
+        },
+        {
+          "title": "Discipline in Execution",
+          "body": "Inspiration gets you started. Discipline gets you across the line. We hold ourselves to high standards in every phase — from the first wireframe to the final deployment. Clean code, consistent timelines, and zero tolerance for 'good enough' when better is possible."
+        },
+        {
+          "title": "Long-Term Thinking",
+          "body": "We're not building websites for the next six months — we're building digital foundations that grow with your business. That means scalable architecture, sustainable design systems, and decisions made with your future in mind, not just your immediate brief."
+        }
+      ]
+    },
+    "services": {
+      "headline": "Websites That Generate Leads. Not Just Compliments.",
+      "subheadline": "Every service is designed around one goal — turning your online presence into a genuine business asset.",
+      "items": [
+        {
+          "title": "Business Website",
+          "description": "A fully custom, professionally designed website built around your brand, your audience, and your goals. Includes discovery and strategy session, custom design (no templates), responsive development, SEO foundations, contact forms, Google Analytics setup, and a full handover with documentation. Ideal for businesses that need a credible, high-performing home base online.",
+          "price": "From $1,500"
+        },
+        {
+          "title": "Landing Page",
+          "description": "A focused, high-converting single page built to drive one specific action — a lead, a booking, a purchase. Perfect for ad campaigns, product launches, or lead generation funnels. Includes copywriting support, mobile-first design, fast load optimisation, and integration with your CRM or email platform.",
+          "price": "From $600"
+        },
+        {
+          "title": "Website Redesign",
+          "description": "Your existing site isn't doing you justice — we fix that. We audit what you have, identify what's holding it back, and rebuild it with modern design, sharper messaging, and a stronger strategic foundation. Includes full UX review, design overhaul, content restructure, and performance optimisation.",
+          "price": "From $1,200"
+        },
+        {
+          "title": "Website Maintenance & Support",
+          "description": "Keep your site fast, secure, and up to date without lifting a finger. Includes monthly plugin and platform updates, uptime monitoring, security checks, performance reviews, and up to two hours of content or design updates per month. Ongoing peace of mind, handled.",
+          "price": "From $99/month"
+        }
+      ]
+    },
+    "portfolio": {
+      "headline": "Our Work",
+      "subheadline": "We're just getting started — but the standard was set from day one.",
+      "items": [
+        {
+          "title": "Coming Soon — First Project in Progress",
+          "description": "Our first case study is being built right now. We're currently working on a conversion-focused business website for a local Australian service brand. Check back soon to see the full breakdown — strategy, design decisions, and results.",
+          "url": "#"
+        },
+        {
+          "title": "Your Project Could Be Here",
+          "description": "We're selectively taking on founding clients who want a genuine partner, not just a vendor. If you're building something worth showcasing, let's talk.",
+          "url": "#contact"
+        }
+      ]
+    },
+    "contact": {
+      "headline": "Let's Build Something Worth Talking About.",
+      "subheadline": "Whether you have a detailed brief or just a rough idea — reach out and we'll have an honest conversation about what's possible, what it costs, and whether we're the right fit for each other.",
+      "email": "support@eventimeetup.com",
+      "cta": "Start a Project"
+    }
+  }
+}
