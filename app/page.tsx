@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, CheckCircle, Globe, Crosshair, Bot, Workflow, Quote } from 'lucide-react';
 import portfolio from '@/lib/portfolio';
 
@@ -100,8 +100,95 @@ function Hero() {
             See how it works <ArrowUpRight size={17} />
           </a>
         </div>
+
+        {/* Glass audio player */}
+        <div className="reveal reveal-delay-4" style={{ marginTop: 48, display: 'flex', justifyContent: 'center' }}>
+          <WelcomePlayer />
+        </div>
       </div>
     </section>
+  );
+}
+
+// ── Welcome audio player ──────────────────────────────────────────────────────
+function WelcomePlayer() {
+  const [playing, setPlaying] = React.useState(false);
+  const [progress, setProgress] = React.useState(0);
+  const [duration, setDuration] = React.useState(0);
+  const audioRef = React.useRef<HTMLAudioElement>(null);
+
+  const toggle = () => {
+    const a = audioRef.current;
+    if (!a) return;
+    if (playing) { a.pause(); setPlaying(false); }
+    else { a.play(); setPlaying(true); }
+  };
+
+  const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+
+  return (
+    <div style={{
+      display: 'inline-flex', alignItems: 'center', gap: 14,
+      padding: '14px 20px',
+      borderRadius: 999,
+      background: 'rgba(255,255,255,0.06)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      border: '1px solid rgba(255,255,255,0.12)',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+      maxWidth: 420, width: '100%',
+    }}>
+      <audio
+        ref={audioRef}
+        src="/welcome.mp3"
+        onTimeUpdate={e => setProgress((e.currentTarget.currentTime / (e.currentTarget.duration || 1)) * 100)}
+        onLoadedMetadata={e => setDuration(e.currentTarget.duration)}
+        onEnded={() => { setPlaying(false); setProgress(0); }}
+      />
+
+      {/* Play/pause button */}
+      <button
+        onClick={toggle}
+        aria-label={playing ? 'Pause' : 'Play welcome message'}
+        style={{
+          width: 40, height: 40, borderRadius: '50%', border: 'none', cursor: 'pointer',
+          background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexShrink: 0, transition: 'transform 0.15s, opacity 0.15s',
+        }}
+        onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
+        onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+      >
+        {playing
+          ? <span style={{ display: 'flex', gap: 3 }}><span style={{ width: 3, height: 14, background: '#fff', borderRadius: 2 }}/><span style={{ width: 3, height: 14, background: '#fff', borderRadius: 2 }}/></span>
+          : <span style={{ width: 0, height: 0, borderStyle: 'solid', borderWidth: '7px 0 7px 13px', borderColor: 'transparent transparent transparent #fff', marginLeft: 3 }} />
+        }
+      </button>
+
+      {/* Label + waveform progress */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--fg)', marginBottom: 6, fontFamily: 'var(--font-head)', whiteSpace: 'nowrap' }}>
+          A word from us
+        </div>
+        {/* Progress bar */}
+        <div
+          style={{ height: 3, background: 'rgba(255,255,255,0.15)', borderRadius: 99, cursor: 'pointer', position: 'relative' }}
+          onClick={e => {
+            const a = audioRef.current;
+            if (!a || !duration) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            const pct  = (e.clientX - rect.left) / rect.width;
+            a.currentTime = pct * duration;
+          }}
+        >
+          <div style={{ height: '100%', width: `${progress}%`, background: 'var(--accent)', borderRadius: 99, transition: 'width 0.1s linear' }} />
+        </div>
+      </div>
+
+      {/* Duration */}
+      <div style={{ fontSize: 11, color: 'var(--muted)', fontVariantNumeric: 'tabular-nums', flexShrink: 0 }}>
+        {duration ? fmt(duration) : '—'}
+      </div>
+    </div>
   );
 }
 
