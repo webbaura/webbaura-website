@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, CheckCircle, Globe, Crosshair, Bot, Workflow, Quote } from 'lucide-react';
 import portfolio from '@/lib/portfolio';
 
-const CALENDLY  = process.env.NEXT_PUBLIC_CALENDLY_URL  || 'https://calendly.com/webbaura/15min';
+const CALENDLY  = process.env.NEXT_PUBLIC_CALENDLY_URL  || 'https://calendly.com/aaronlevin98/free-consultation';
 const EMAIL     = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'aaronjlevin@outlook.com';
 
 // ── Stats hook — fetches live build count from build server ──────────────────
