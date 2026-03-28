@@ -89,7 +89,7 @@ function Hero() {
         }}>
           Most small business websites sit there looking presentable while doing nothing.
           A good website earns trust, answers the right questions, and turns visitors
-          into enquiries — without you lifting a finger.
+          into enquiries — on any device, at any hour, without you lifting a finger.
         </p>
 
         <div className="reveal reveal-delay-3" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -114,9 +114,9 @@ function TrustStrip({ sitesRebuilt }: { sitesRebuilt: number }) {
       sublabel: 'with better websites',
     },
     {
-      value: '< 2 weeks',
-      label: 'Typical turnaround',
-      sublabel: 'from brief to live',
+      value: 'Mobile',
+      label: 'First, always',
+      sublabel: '70%+ of searches are mobile',
     },
     {
       value: 'Yours',
@@ -617,8 +617,8 @@ const REASONS = [
   },
   {
     icon: Globe,
-    title: 'Built around your customers, not your industry',
-    body: 'Your site is designed for the specific people searching for your services — what they need to see, what builds their trust, what makes them act. Not a template. Not a theme.',
+    title: 'Built for mobile first',
+    body: 'More than 70% of local searches happen on a phone. Every site we build is designed on mobile first — fast, thumb-friendly, and easy to navigate with one hand. Desktop looks great too, but mobile is where your customers actually are.',
   },
   {
     icon: Star,
