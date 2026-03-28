@@ -58,7 +58,6 @@ function Nav() {
 function Hero() {
   return (
     <section style={{ paddingTop: 160, paddingBottom: 120, position: 'relative', overflow: 'hidden' }}>
-      {/* Glow */}
       <div style={{
         position: 'absolute', top: -120, left: '50%', transform: 'translateX(-50%)',
         width: 600, height: 600, borderRadius: '50%',
@@ -75,30 +74,30 @@ function Hero() {
           fontFamily: 'var(--font-head)',
         }}>
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)', display: 'inline-block' }} />
-          Full-stack developer · 6+ years · 50+ clients
+          Melbourne · Websites that work for you 24/7
         </div>
 
-        <h1 className="reveal reveal-delay-1" style={{ fontSize: 'clamp(38px, 5.5vw, 66px)', marginBottom: 24, maxWidth: 740, margin: '0 auto 24px' }}>
-          Websites and systems
+        <h1 className="reveal reveal-delay-1" style={{ fontSize: 'clamp(36px, 5.5vw, 64px)', marginBottom: 24, maxWidth: 760, margin: '0 auto 24px', lineHeight: 1.1 }}>
+          Your website should be your
           <br />
-          <span style={{ color: 'var(--accent-light)' }}>shaped by your business.</span>
+          <span style={{ color: 'var(--accent-light)' }}>best salesperson.</span>
         </h1>
 
         <p className="reveal reveal-delay-2" style={{
           fontSize: 'clamp(16px, 1.8vw, 19px)', color: 'var(--muted)', lineHeight: 1.7,
-          maxWidth: 560, margin: '0 auto 48px',
+          maxWidth: 580, margin: '0 auto 48px',
         }}>
-          Full-stack developer with 6+ years in production. I build websites, automation systems,
-          and AI tools — designed around what your business actually needs, with full code
-          ownership handed to you on delivery.
+          Most small business websites sit there looking presentable while doing nothing.
+          A good website earns trust, answers the right questions, and turns visitors
+          into enquiries — without you lifting a finger.
         </p>
 
         <div className="reveal reveal-delay-3" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: 16, padding: '15px 32px' }}>
             <Calendar size={17} /> Book a free call
           </a>
-          <a href={`mailto:${EMAIL}`} className="btn btn-ghost" style={{ fontSize: 16, padding: '15px 32px' }}>
-            <Mail size={17} /> Send an email
+          <a href="#what-your-site-should-do" className="btn btn-ghost" style={{ fontSize: 16, padding: '15px 32px' }}>
+            See how it works <ArrowUpRight size={17} />
           </a>
         </div>
       </div>
@@ -110,24 +109,24 @@ function Hero() {
 function TrustStrip({ sitesRebuilt }: { sitesRebuilt: number }) {
   const stats = [
     {
-      value: sitesRebuilt > 0 ? `${sitesRebuilt}` : '—',
-      label: 'Sites rebuilt',
-      sublabel: 'and counting',
+      value: sitesRebuilt > 0 ? `${sitesRebuilt}+` : '50+',
+      label: 'Melbourne businesses',
+      sublabel: 'with better websites',
     },
     {
-      value: '50+',
-      label: 'Clients served',
-      sublabel: 'SME to enterprise',
+      value: '< 2 weeks',
+      label: 'Typical turnaround',
+      sublabel: 'from brief to live',
     },
     {
-      value: '6+',
-      label: 'Years in production',
-      sublabel: 'full-stack development',
+      value: 'Yours',
+      label: 'Full code ownership',
+      sublabel: 'no lock-in, ever',
     },
     {
       value: '★ 5.0',
-      label: 'Client satisfaction',
-      sublabel: 'across all engagements',
+      label: 'Client rating',
+      sublabel: 'see it before you pay',
       accent: true,
     },
   ];
@@ -239,6 +238,85 @@ function Testimonial() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Education — what a website should do ──────────────────────────────────────
+const WEBSITE_TRUTHS = [
+  {
+    number: '01',
+    heading: 'It should answer the question before they think to ask it.',
+    body: 'When someone finds your business online, they have a specific need and a short attention span. A good website anticipates what they\'re wondering — "Can they do my job?", "Are they reliable?", "How do I contact them?" — and answers it immediately, in plain language. Anything that makes them work for that answer is working against you.',
+  },
+  {
+    number: '02',
+    heading: 'It should make one thing easier than everything else.',
+    body: 'For a plumber, that\'s a phone call. For a real estate agent, it\'s a valuation request. For a restaurant, it\'s a reservation. Every good website has a single primary action it\'s designed to produce, and every element on the page either supports that action or shouldn\'t be there. When a site tries to do everything, it does nothing particularly well.',
+  },
+  {
+    number: '03',
+    heading: 'It should earn trust before it asks for anything.',
+    body: 'Visitors don\'t know you. They\'ve been burned by businesses that looked professional online and weren\'t. The sites that convert are the ones that show real evidence — genuine reviews, specific credentials, a clear location, a face behind the business. Trust isn\'t claimed with language. It\'s shown with proof.',
+  },
+  {
+    number: '04',
+    heading: 'It should reflect what makes you worth choosing.',
+    body: 'There are other businesses in your industry within your area. A visitor comparing you to them will make a decision in seconds based on first impressions. That impression should communicate exactly what makes you different — your speed, your specialisation, your track record, your standards. If it doesn\'t, you\'re leaving the decision to chance.',
+  },
+];
+
+function WhatYourSiteShouldDo() {
+  return (
+    <section id="what-your-site-should-do" style={{ borderTop: '1px solid var(--border)', padding: '120px 0' }}>
+      <div className="container">
+        <div className="reveal" style={{ marginBottom: 80 }}>
+          <p style={{ color: 'var(--accent-light)', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16 }}>
+            What a good website does
+          </p>
+          <h2 style={{ fontSize: 'clamp(28px, 4vw, 46px)', maxWidth: 560, lineHeight: 1.15 }}>
+            Most sites look the part.
+            <br />
+            <span style={{ color: 'var(--muted)' }}>Few actually do the job.</span>
+          </h2>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          {WEBSITE_TRUTHS.map((t, i) => (
+            <div
+              key={i}
+              className={`reveal reveal-delay-${i + 1}`}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '80px 1fr',
+                gap: '32px',
+                padding: '48px 0',
+                borderBottom: i < WEBSITE_TRUTHS.length - 1 ? '1px solid var(--border)' : 'none',
+                alignItems: 'start',
+              }}
+            >
+              <div style={{
+                fontFamily: 'var(--font-head)',
+                fontSize: 13,
+                fontWeight: 700,
+                color: 'var(--accent-light)',
+                letterSpacing: '0.06em',
+                paddingTop: 6,
+              }}>
+                {t.number}
+              </div>
+              <div>
+                <h3 style={{ fontSize: 'clamp(18px, 2.2vw, 24px)', marginBottom: 16, lineHeight: 1.3, maxWidth: 640 }}>
+                  {t.heading}
+                </h3>
+                <p style={{ color: 'var(--muted)', fontSize: 16, lineHeight: 1.8, maxWidth: 640 }}>
+                  {t.body}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -411,31 +489,35 @@ function Portfolio() {
 const SERVICES = [
   {
     icon: Globe,
-    label: 'Websites',
-    title: 'A site that does the work while you sleep',
-    body: 'Production-ready, mobile-first websites built for lead capture and local search. Competitive design, clean code, yours to own outright.',
-    points: ['Competitor-informed design', 'SEO-ready from day one', 'Core Web Vitals tested'],
+    label: 'Website',
+    title: 'A site that turns visitors into enquiries',
+    body: 'Designed specifically for your business, your customers, and your location. Built to rank locally, load fast on mobile, and make the right action obvious — whether that\'s a call, a booking, or a form submission.',
+    points: ['Designed for your primary conversion goal', 'Local SEO built in from day one', 'Live staging before you pay a cent'],
+    price: 'From $1,500',
   },
   {
-    icon: Crosshair,
-    label: 'Lead Generation',
-    title: 'Know who to call before they call you',
-    body: 'We identify local businesses that are losing customers to better-presented competitors, score their digital presence, and build a warm outreach pipeline — ready to act on.',
-    points: ['Automated prospect discovery', 'Prioritised by opportunity', 'Personalised outreach at scale'],
+    icon: Zap,
+    label: 'Website + Google',
+    title: 'Visible to the right people at the right time',
+    body: 'Your website paired with a fully optimised Google Business Profile — the combination that gets local businesses into the Maps pack. The two work together. One without the other is half the job.',
+    points: ['GMB setup and optimisation', 'Review generation strategy', 'Monthly local search report'],
+    price: 'From $2,200',
   },
   {
     icon: Workflow,
-    label: 'Automation',
-    title: 'Stop doing manually what a system can do overnight',
-    body: 'Custom automation pipelines that handle intake, follow-up, reporting, and internal workflows — so your team focuses on work that actually needs them.',
-    points: ['Client intake & onboarding flows', 'CRM and scheduling integrations', 'Reporting and digest automation'],
+    label: 'Growth Package',
+    title: 'A system that keeps working after launch',
+    body: 'For businesses that want more than a good-looking site. Monthly updates, performance tracking, conversion improvements, and ongoing support — so your site gets better over time, not stale.',
+    points: ['Monthly performance review', 'Copy and design updates', 'Priority support'],
+    price: 'From $350/month',
   },
   {
     icon: Bot,
-    label: 'AI Agents',
-    title: 'A tireless team member that never misses a message',
-    body: 'Custom AI agents that handle enquiries, qualify leads, book appointments, and respond intelligently — trained on your business and available around the clock.',
-    points: ['Conversational lead qualification', 'Bookings and FAQ handling', 'Connected to your existing tools'],
+    label: 'AI Enquiry Agent',
+    title: 'Every message answered, every lead captured',
+    body: 'A custom AI agent that responds to enquiries on your site around the clock. Qualifies leads, answers common questions, and books appointments — so you wake up to warm leads, not missed opportunities.',
+    points: ['Trained on your services and pricing', 'Hands off to you at the right moment', 'Works while you\'re on the tools'],
+    price: 'From $800 + setup',
   },
 ];
 
@@ -445,14 +527,14 @@ function Services() {
       <div className="container">
         <div className="reveal" style={{ marginBottom: 64 }}>
           <p style={{ color: 'var(--accent-light)', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>
-            What we build
+            Packages
           </p>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', maxWidth: 480 }}>
-              Custom solutions.<br />Real outcomes.
+              Simple options.<br />Clear outcomes.
             </h2>
-            <p style={{ color: 'var(--muted)', fontSize: 15, maxWidth: 360, lineHeight: 1.7 }}>
-              Every engagement starts with understanding what's actually costing you customers — then building the system that fixes it.
+            <p style={{ color: 'var(--muted)', fontSize: 15, maxWidth: 380, lineHeight: 1.7 }}>
+              Every package starts with understanding what your business actually needs to grow — not what sounds good on a features list.
             </p>
           </div>
         </div>
@@ -503,7 +585,7 @@ function Services() {
               <h3 style={{ fontSize: 18, marginBottom: 12, lineHeight: 1.3 }}>{s.title}</h3>
               <p style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.75, marginBottom: 24 }}>{s.body}</p>
 
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 24 }}>
                 {s.points.map((pt, j) => (
                   <li key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--fg2)' }}>
                     <span style={{ width: 16, height: 16, borderRadius: '50%', background: 'rgba(52,211,153,0.14)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -513,6 +595,11 @@ function Services() {
                   </li>
                 ))}
               </ul>
+              {(s as any).price && (
+                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--accent-light)', fontFamily: 'var(--font-head)', paddingTop: 16, borderTop: '1px solid var(--border)' }}>
+                  {(s as any).price}
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -524,19 +611,19 @@ function Services() {
 // ── Why different ─────────────────────────────────────────────────────────────
 const REASONS = [
   {
-    icon: Search,
-    title: 'Grounded in intelligence',
-    body: 'Every build starts with competitor analysis — local rivals scored, design patterns mapped, and positioning gaps identified before a line of code is written.',
+    icon: CheckCircle,
+    title: 'You see it before you pay',
+    body: 'A live staging site is built and sent to you before any invoice is raised. You decide if it works for your business. If it doesn\'t, keep the research — the risk is ours.',
   },
   {
-    icon: CheckCircle,
-    title: 'You own everything',
-    body: 'The repo is yours. Full source code, no lock-in, no ongoing fees unless you want them. Built on Next.js and TypeScript — hand it to any developer and they can work with it.',
+    icon: Globe,
+    title: 'Built around your customers, not your industry',
+    body: 'Your site is designed for the specific people searching for your services — what they need to see, what builds their trust, what makes them act. Not a template. Not a theme.',
   },
   {
     icon: Star,
-    title: 'See it before you commit',
-    body: 'You get a live staging URL before any money changes hands. If it works for you, we talk. If not, keep the insights — the risk is entirely mine.',
+    title: 'No lock-in',
+    body: 'You own the code outright. No platform subscriptions, no ongoing fees unless you choose them, no asking permission to make changes. It\'s yours from day one.',
   },
 ];
 
@@ -546,10 +633,11 @@ function WhyDifferent() {
       <div className="container">
         <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
           <p style={{ color: 'var(--accent-light)', fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: 13, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>
-            Why Webbaura
+            How we work
           </p>
           <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', maxWidth: 520, margin: '0 auto' }}>
-            Different by design
+            Your interest first.
+            <br />Always.
           </h2>
         </div>
 
@@ -594,16 +682,16 @@ function CTA() {
             background: 'linear-gradient(135deg, rgba(124,106,247,0.08) 0%, var(--surface) 100%)',
             borderColor: 'rgba(124,106,247,0.2)',
           }}>
-            <h2 style={{ fontSize: 'clamp(28px, 4vw, 48px)', marginBottom: 16, maxWidth: 560, margin: '0 auto 16px' }}>
-              Want to see what we'd build for you?
+            <h2 style={{ fontSize: 'clamp(28px, 4vw, 48px)', marginBottom: 16, maxWidth: 600, margin: '0 auto 16px', lineHeight: 1.15 }}>
+              See what your site could look like — before you commit to anything.
             </h2>
             <p style={{ color: 'var(--muted)', fontSize: 17, maxWidth: 480, margin: '0 auto 48px', lineHeight: 1.7 }}>
-              I&apos;ll research your market, build your site, and send you the link — before you spend a dollar.
+              We&apos;ll have a 15-minute conversation about your business. If it&apos;s a good fit, we&apos;ll show you what we&apos;d build — no obligation, no deposit.
             </p>
 
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
               <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: 16, padding: '15px 32px' }}>
-                <Calendar size={17} /> Book a 15-min call
+                <Calendar size={17} /> Book a free call
               </a>
               <a href={`mailto:${EMAIL}`} className="btn btn-ghost" style={{ fontSize: 16, padding: '15px 32px' }}>
                 <Mail size={17} /> Send an email
@@ -611,7 +699,7 @@ function CTA() {
             </div>
 
             <p style={{ color: 'var(--muted2)', fontSize: 13 }}>
-              No sales pitch. No deposit. Just a conversation.
+              Melbourne-based · Typically respond within a few hours
             </p>
           </div>
         </div>
@@ -650,10 +738,10 @@ export default function Home() {
       <main>
         <Hero />
         <TrustStrip sitesRebuilt={stats?.sitesRebuilt ?? 0} />
-        <HowItWorks />
+        <WhatYourSiteShouldDo />
+        <Testimonial />
         <Services />
         <Portfolio />
-        <Testimonial />
         <WhyDifferent />
         <CTA />
       </main>
