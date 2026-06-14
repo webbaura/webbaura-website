@@ -1,10 +1,28 @@
 {
-  "primary": "#0F172A",
-  "secondary": "#1E293B",
-  "accent": "#2563EB",
-  "accentHover": "#1D4ED8",
-  "background": "#F8FAFC",
-  "border": "#E2E8F0",
-  "muted": "#64748B",
-  "white": "#FFFFFF"
+  "name": "Webbaura",
+  "wordmark": "WEBBAURA",
+  "ink": "#0A0D0B",
+  "ink2": "#14181A",
+  "cream": "#F5F1E8",
+  "cream2": "#EDE7D9",
+  "paper": "#FFFFFF",
+  "line": "#E5E0D6",
+  "muted": "#6B7268",
+  "accent": "#1F8A60",
+  "accentHover": "#176B4A",
+  "accentSoft": "#D4EFE3",
+  "amber": "#D89F4A",
+  "typography": {
+    "display": "Bricolage Grotesque",
+    "body": "Inter",
+    "displayWeight": 800,
+    "bodyWeight": 400
+  },
+  "radius": {
+    "sm": "8px",
+    "md": "14px",
+    "lg": "20px",
+    "xl": "28px",
+    "pill": "999px"
+  }
 }
