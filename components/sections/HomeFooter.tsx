@@ -127,7 +127,7 @@ export function HomeFooter() {
           }}
         >
           <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.42)' }}>
-            © {year} {SITE.name} · {SITE.city}, {SITE.country}
+            © {year} {SITE.name} · {SITE.entity} ABN {SITE.abn} · {SITE.city}, {SITE.country}
           </p>
           <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.42)' }}>
             Built in-house with Next.js

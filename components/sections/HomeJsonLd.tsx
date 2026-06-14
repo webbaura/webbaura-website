@@ -12,6 +12,12 @@ export function HomeJsonLd() {
       name: SITE.name,
       url: SITE.url,
       email: SITE.email,
+      taxID: SITE.abn,
+      identifier: {
+        '@type': 'PropertyValue',
+        propertyID: 'ABN',
+        value: SITE.abn,
+      },
       logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.svg` },
       image: `${SITE.url}/og-image.png`,
       description:
