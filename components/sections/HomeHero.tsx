@@ -18,13 +18,13 @@ export function HomeHero() {
   return (
     <section
       id="top"
-      className="grain"
+      className="grain md:h-screen md:min-h-[640px] md:flex md:flex-col"
       style={{
         background: 'var(--ink)',
         color: '#fff',
         position: 'relative',
         overflow: 'hidden',
-        paddingTop: 'clamp(112px, 13vw, 152px)',
+        paddingTop: 'clamp(96px, 11vw, 128px)',
         paddingBottom: 0,
       }}
     >
@@ -65,7 +65,10 @@ export function HomeHero() {
         }}
       />
 
-      <div className="container" style={{ position: 'relative' }}>
+      <div
+        className="container md:flex-1 md:flex md:flex-col md:justify-center"
+        style={{ position: 'relative' }}
+      >
         {/* Status pill */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -115,11 +118,10 @@ export function HomeHero() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr',
             gap: 56,
             alignItems: 'end',
           }}
-          className="lg:grid-cols-[1.4fr_1fr]"
+          className="grid-cols-1 lg:grid-cols-[1.4fr_1fr]"
         >
           <div>
             <h1
@@ -303,9 +305,6 @@ export function HomeHero() {
             </div>
           </motion.aside>
         </div>
-
-        {/* Spacer */}
-        <div style={{ height: 64 }} />
       </div>
 
       {/* Bottom marquee strip — industries served */}

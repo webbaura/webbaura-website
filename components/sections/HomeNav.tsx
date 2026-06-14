@@ -310,16 +310,13 @@ export function HomeNav() {
                 <a
                   href={`mailto:${SITE.email}`}
                   onClick={() => setOpen(false)}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 10,
-                    padding: '12px 4px',
-                    color: 'rgba(255,255,255,0.66)',
-                    fontSize: 14,
-                  }}
+                  className="btn btn-ghost btn-ghost--on-dark"
+                  style={{ justifyContent: 'space-between', padding: '14px 20px' }}
                 >
-                  <Mail size={14} /> {SITE.email}
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                    <Mail size={16} /> Send an email
+                  </span>
+                  <ArrowUpRight size={16} />
                 </a>
                 <p
                   style={{

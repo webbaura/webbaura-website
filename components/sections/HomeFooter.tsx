@@ -93,16 +93,10 @@ export function HomeFooter() {
             </a>
             <a
               href={`mailto:${SITE.email}`}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                color: 'rgba(255,255,255,0.66)',
-                fontSize: 14,
-              }}
-              className="hover:text-white"
+              className="btn btn-ghost btn-ghost--on-dark"
+              style={{ justifyContent: 'center', gap: 8 }}
             >
-              <Mail size={14} /> {SITE.email}
+              <Mail size={15} /> Send an email
             </a>
           </div>
         </div>
