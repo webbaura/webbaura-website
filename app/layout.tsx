@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Inter, Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
 import { SpotlightCursor } from '@/components/ui/SpotlightCursor';
+
+const GA_ID = 'G-LZ23DFP7E8';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -66,6 +69,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <SpotlightCursor />
+
+        {/* Google Analytics — gtag.js */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );
