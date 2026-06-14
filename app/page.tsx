@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, CheckCircle, Globe, Crosshair, Bot, Workflow, Quote } from 'lucide-react';
+import { Search, Zap, Send, ArrowUpRight, Calendar, Mail, Star, CheckCircle, Globe, Quote } from 'lucide-react';
 import portfolio from '@/lib/portfolio';
 
 const CALENDLY  = process.env.NEXT_PUBLIC_CALENDLY_URL  || 'https://calendly.com/aaronlevin98/free-consultation';
@@ -572,39 +572,39 @@ function Portfolio() {
   );
 }
 
-// ── Services ──────────────────────────────────────────────────────────────────
-const SERVICES = [
+// ── Packages ──────────────────────────────────────────────────────────────────
+const PACKAGES = [
   {
     icon: Globe,
-    label: 'Website',
-    title: 'A site that turns visitors into enquiries',
-    body: 'Designed specifically for your business, your customers, and your location. Built to rank locally, load fast on mobile, and make the right action obvious — whether that\'s a call, a booking, or a form submission.',
-    points: ['Designed for your primary conversion goal', 'Local SEO built in from day one', 'Live staging before you pay a cent'],
-    price: 'From $1,500',
+    name: 'Basic',
+    tagline: 'A professional site that gets you found and gets the phone ringing.',
+    price: 'From $800',
+    support: '1 month of ongoing support',
+    features: [
+      'Custom design',
+      'Conversion Rate Optimisation (CRO)',
+      'Technical SEO',
+      'Contact form',
+      'Google Analytics setup',
+    ],
+    cta: 'Start with Basic',
+    recommended: false,
   },
   {
     icon: Zap,
-    label: 'Website + Google',
-    title: 'Visible to the right people at the right time',
-    body: 'Your website paired with a fully optimised Google Business Profile — the combination that gets local businesses into the Maps pack. The two work together. One without the other is half the job.',
-    points: ['GMB setup and optimisation', 'Review generation strategy', 'Monthly local search report'],
-    price: 'From $2,200',
-  },
-  {
-    icon: Workflow,
-    label: 'Growth Package',
-    title: 'A system that keeps working after launch',
-    body: 'For businesses that want more than a good-looking site. Monthly updates, performance tracking, conversion improvements, and ongoing support — so your site gets better over time, not stale.',
-    points: ['Monthly performance review', 'Copy and design updates', 'Priority support'],
-    price: 'From $350/month',
-  },
-  {
-    icon: Bot,
-    label: 'AI Enquiry Agent',
-    title: 'Every message answered, every lead captured',
-    body: 'A custom AI agent that responds to enquiries on your site around the clock. Qualifies leads, answers common questions, and books appointments — so you wake up to warm leads, not missed opportunities.',
-    points: ['Trained on your services and pricing', 'Hands off to you at the right moment', 'Works while you\'re on the tools'],
-    price: 'From $800 + setup',
+    name: 'Premium',
+    tagline: 'Everything in Basic, plus the tools to edit it yourself and automate the busywork.',
+    price: 'From $2,000',
+    support: '3 months of ongoing support',
+    features: [
+      'Everything in Basic',
+      'Sanity.io CMS — edit content yourself',
+      'Automations (N8N, automated responses)',
+      'Third-party integrations & chatbots',
+      'Google Business Profile setup',
+    ],
+    cta: 'Go Premium',
+    recommended: true,
   },
 ];
 
@@ -618,78 +618,118 @@ function Services() {
           </p>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', maxWidth: 480 }}>
-              Simple options.<br />Clear outcomes.
+              Two packages.<br />No surprises.
             </h2>
             <p style={{ color: 'var(--muted)', fontSize: 15, maxWidth: 380, lineHeight: 1.7 }}>
-              Every package starts with understanding what your business actually needs to grow — not what sounds good on a features list.
+              Start with a clean, fast site — or go further with a CMS, automations, and integrations built in.
             </p>
           </div>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-          gap: 1,
-          border: '1px solid var(--border)',
-          borderRadius: 'var(--radius-lg)',
-          overflow: 'hidden',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: 24,
+          maxWidth: 880,
+          margin: '0 auto',
         }}>
-          {SERVICES.map((s, i) => (
+          {PACKAGES.map((p, i) => (
             <div
-              key={i}
+              key={p.name}
               className={`reveal reveal-delay-${i + 1}`}
               style={{
-                padding: '36px 32px',
-                background: 'var(--surface)',
-                borderRight: '1px solid var(--border)',
-                borderBottom: '1px solid var(--border)',
-                transition: 'background 0.2s',
-                cursor: 'default',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.background = 'var(--surface-hover)';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.background = 'var(--surface)';
+                padding: '40px 36px',
+                background: p.recommended
+                  ? 'linear-gradient(135deg, rgba(124,106,247,0.08) 0%, var(--surface) 100%)'
+                  : 'var(--surface)',
+                border: p.recommended
+                  ? '1px solid rgba(124,106,247,0.32)'
+                  : '1px solid var(--border)',
+                borderRadius: 'var(--radius-lg)',
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
+              {p.recommended && (
                 <div style={{
-                  width: 38, height: 38, borderRadius: 9,
+                  position: 'absolute', top: -12, right: 28,
+                  background: 'var(--accent)', color: '#fff',
+                  fontSize: 11, fontWeight: 700, fontFamily: 'var(--font-head)',
+                  letterSpacing: '0.08em', textTransform: 'uppercase',
+                  padding: '5px 12px', borderRadius: 99,
+                }}>
+                  Recommended
+                </div>
+              )}
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                <div style={{
+                  width: 40, height: 40, borderRadius: 10,
                   background: 'var(--accent-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center',
                   flexShrink: 0,
                 }}>
-                  <s.icon size={17} color="var(--accent-light)" />
+                  <p.icon size={18} color="var(--accent-light)" />
                 </div>
-                <span style={{
-                  fontSize: 11, fontWeight: 700, fontFamily: 'var(--font-head)',
-                  letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-light)',
-                }}>
-                  {s.label}
-                </span>
+                <h3 style={{ fontSize: 22, margin: 0, lineHeight: 1.2 }}>{p.name}</h3>
               </div>
 
-              <h3 style={{ fontSize: 18, marginBottom: 12, lineHeight: 1.3 }}>{s.title}</h3>
-              <p style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.75, marginBottom: 24 }}>{s.body}</p>
+              <p style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.7, marginBottom: 28 }}>
+                {p.tagline}
+              </p>
 
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 24 }}>
-                {s.points.map((pt, j) => (
-                  <li key={j} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--fg2)' }}>
-                    <span style={{ width: 16, height: 16, borderRadius: '50%', background: 'rgba(52,211,153,0.14)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <CheckCircle size={10} color="var(--green)" />
+              <div style={{
+                fontFamily: 'var(--font-head)',
+                fontSize: 28,
+                fontWeight: 800,
+                letterSpacing: '-0.02em',
+                color: 'var(--fg)',
+                marginBottom: 28,
+              }}>
+                {p.price}
+              </div>
+
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24, padding: 0, flex: 1 }}>
+                {p.features.map((f, j) => (
+                  <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14, color: 'var(--fg2)', lineHeight: 1.5 }}>
+                    <span style={{
+                      width: 18, height: 18, borderRadius: '50%',
+                      background: 'rgba(52,211,153,0.14)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0, marginTop: 2,
+                    }}>
+                      <CheckCircle size={11} color="var(--green)" />
                     </span>
-                    {pt}
+                    {f}
                   </li>
                 ))}
               </ul>
-              {(s as any).price && (
-                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--accent-light)', fontFamily: 'var(--font-head)', paddingTop: 16, borderTop: '1px solid var(--border)' }}>
-                  {(s as any).price}
-                </div>
-              )}
+
+              <div style={{
+                fontSize: 13, color: 'var(--muted)',
+                paddingTop: 18, marginBottom: 24,
+                borderTop: '1px solid var(--border)',
+              }}>
+                {p.support}
+              </div>
+
+              <a
+                href={CALENDLY} target="_blank" rel="noopener noreferrer"
+                className={p.recommended ? 'btn btn-primary' : 'btn btn-ghost'}
+                style={{ justifyContent: 'center', fontSize: 15, padding: '13px 24px' }}
+              >
+                {p.cta} <ArrowUpRight size={16} />
+              </a>
             </div>
           ))}
         </div>
+
+        <p className="reveal" style={{
+          textAlign: 'center', marginTop: 32,
+          color: 'var(--muted2)', fontSize: 13,
+        }}>
+          E-commerce isn&apos;t something we offer — if that&apos;s what you need, we&apos;ll point you somewhere good.
+        </p>
       </div>
     </section>
   );
